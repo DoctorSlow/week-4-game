@@ -25,10 +25,8 @@
                 Number or you lose. Each game starts with a new Target Number and new dice values. Happy rolling!</p>
             <br>
             <div class="text-center">
-                <button class="btn btn-warning btn-xs theme-button">
-                    <span class="glyphicon glypicon-music"></span>Play Music</button>
-                <button class="btn btn-default btn-xs pause-button">
-                    <span class="glyphicon glyphicon-pause"></span>Pause Music</button>
+                <button id="start-button" class="btn btn-warning btn-xs theme-button">
+                    <span class="glyphicon glypicon-music"></span>Start/Reset Game</button>
             </div>
         </div>
     </div>
@@ -77,44 +75,68 @@
 
     <script type="text/javascript">
         //Firstly we need an initialize function that runs at start up and every time a game is won or lost.
-        $(document).ready(function () {
-            //generate a random number between 19 and 120
-            var targetNumber = Math.floor(Math.random() * (120 - 19 + 1) + 19);
-            //display it in the targetNumber div
-            $("#targetNumber").text(targetNumber);
+        $("#start-button").click(function () {
 
-            //for 
+            $(document).ready(function () {
 
-            //when first die-button is clicked...
-            $('.button1').click(function () {
-                //generate a new random number between 1 and 12
-                var userNumber = Math.floor(Math.random() * (12 - 1 + 1) + 1);
-                //add it to the Dice-Roll-Sum div
-                $("#userNumber").text(userNumber);
-            });
+                var wins = 0;
+                var losses = 0;
+                var userNumber = 0;
 
-            //when first die-button is clicked...
-            $('.button2').click(function () {
-                //generate a new random number between 1 and 12
-                var userNumber = Math.floor(Math.random() * (12 - 1 + 1) + 1);
-                //add it to the Dice-Roll-Sum div
-                $("#userNumber").text(userNumber);
-            });
+                //generate a random number between 19 and 120
+                var targetNumber = Math.floor(Math.random() * (120 - 19 + 1) + 19);
+                //display it in the targetNumber div
+                $("#targetNumber").text(targetNumber);
 
-            //when first die-button is clicked...
-            $('.button3').click(function () {
-                //generate a new random number between 1 and 12
-                var userNumber = Math.floor(Math.random() * (12 - 1 + 1) + 1);
-                //add it to the Dice-Roll-Sum div
-                $("#userNumber").text(userNumber);
-            });
+                function diceRoll() {
+                    return Math.floor(Math.random() * (12 - 1 + 1) + 1);
+                }
 
-            //when first die-button is clicked...
-            $('.button4').click(function () {
-                //generate a new random number between 1 and 12
-                var userNumber = Math.floor(Math.random() * (12 - 1 + 1) + 1);
-                //add it to the Dice-Roll-Sum div
-                $("#userNumber").text(userNumber);
+                function playGame() {
+                    $("#userNumber").text(userNumber);
+                    $('.button1').attr('value', diceRoll());
+                    $('.button2').attr('value', diceRoll());
+                    $('.button3').attr('value', diceRoll());
+                    $('.button4').attr('value', diceRoll());
+                }
+
+                $('.button1').click(function () {
+                    userNumber += parseInt($(this).attr('value'), 10);
+                    $("#userNumber").text(userNumber);
+
+                    // //when first die-button is clicked...
+                    // $('.button1').click(function () {
+                    //     //generate a new random number between 1 and 12
+                    //     var userNumber = Math.floor(Math.random() * (12 - 1 + 1) + 1);
+                    //     //add it to the Dice-Roll-Sum div
+                    //     $("#userNumber").text(userNumber);
+                    // });
+
+                    // //when first die-button is clicked...
+                    // $('.button2').click(function () {
+                    //     //generate a new random number between 1 and 12
+                    //     var userNumber = Math.floor(Math.random() * (12 - 1 + 1) + 1);
+                    //     //add it to the Dice-Roll-Sum div
+                    //     $("#userNumber").text(userNumber);
+                    // });
+
+                    // //when first die-button is clicked...
+                    // $('.button3').click(function () {
+                    //     //generate a new random number between 1 and 12
+                    //     var userNumber = Math.floor(Math.random() * (12 - 1 + 1) + 1);
+                    //     //add it to the Dice-Roll-Sum div
+                    //     $("#userNumber").text(userNumber);
+                    // });
+
+                    // //when first die-button is clicked...
+                    // $('.button4').click(function () {
+                    //     //generate a new random number between 1 and 12
+                    //     var userNumber = Math.floor(Math.random() * (12 - 1 + 1) + 1);
+                    //     //add it to the Dice-Roll-Sum div
+                    //     $("#userNumber").text(userNumber);
+                    // });
+
+                });
             });
 
         });

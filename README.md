@@ -1,1 +1,3 @@
 # week-4-game
+
+This game is a basic matching and adding game similar to blackjack. You have four dice with hidden values. You must click on each die to reveal it's value and add it to your sum. The goal is to match your dice sum with the computer-generated random target number. If you do that, you win. Otherwise...

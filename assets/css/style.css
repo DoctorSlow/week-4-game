@@ -1,4 +1,18 @@
-img,
+/* .jumbotron {
+    background-image: url(../images/Casino-Royale.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+} */
+
+.jumbotron {
+    background-color: rgba(72, 113, 176, 0.927)
+}
+
+.instructions {
+    color: white;
+}
+
 input {
     width: 150px;
     height: 150px;

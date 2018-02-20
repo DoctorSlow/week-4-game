@@ -1,5 +1,5 @@
-/* .jumbotron {
-    background-image: url(../images/Casino-Royale.jpg);
+/* body {
+    background-image: url(../images/Chips_Falling.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -18,3 +18,7 @@ input {
     height: 150px;
     padding: 25px;
 }
+
+/* #dice {
+    background-color: white;
+} */

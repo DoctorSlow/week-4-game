@@ -55,7 +55,7 @@
                     </h2>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" id="dice">
                 <div class="col-sm-3">
                     <input id="die1jpg" type='image' src="assets/images/12-sided-random-die.jpg" class="button1">
                     <input id="die1gif" type='image' src="assets/images/12-sided-random-die.gif" class="invisible">
@@ -78,27 +78,25 @@
 
 
     <script type="text/javascript">
-        //Firstly we need an initialize function that runs at start up and every time a game is won or lost.
+        //set variables
         var wins = 0;
         var losses = 0;
         var userNumber = 0;
 
-
-
         $(document).ready(function () {
 
             $("#start-button").click(function () {
+
+                playGame();
 
                 //generate a random number between 19 and 120
                 var targetNumber = Math.floor(Math.random() * (120 - 19 + 1) + 19);
                 //display it in the targetNumber div
                 $("#targetNumber").text(targetNumber);
 
-                playGame();
-
                 $("#userWins").text(wins);
-                $("userLosses").text(losses);
-                userNumber = 0;
+                $("#userLosses").text(losses);
+                //userNumber = 0;
 
                 function playGame() {
                     //set 'value' attribute and diceRoll function to each die
@@ -120,12 +118,23 @@
                     //check for win/loss
                     if (userNumber === targetNumber) {
                         wins++;
-                        alert("Nice rolling! You matched the target number--you win!");
-                    } else if (userNumber >= targetNumber) {
-                        losses--;
-                        alert(
-                            "Oh no--rolling is hard. You exceeded the target number--you lose!"
-                        );
+                        window.setTimeout(function () {
+                            alert(
+                                "Nice rolling! You matched the target number--you win!"
+                            );
+                            userNumber = 0;
+                            playGame();
+                        }, 300);
+                    } else if (userNumber > targetNumber) {
+                        losses++;
+                        window.setTimeout(function () {
+                            alert(
+                                "Oh no--rolling is hard. You exceeded the target number--you lose!"
+                            );
+                            userNumber = 0;
+                            $("#userNumber").text(userNumber);
+                            playGame();
+                        }, 300);
                     }
 
                     userNumber += parseInt($(this).attr('value'));

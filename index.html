@@ -115,7 +115,12 @@
                     dieValue = parseInt(dieValue);
                     userNumber += dieValue;
                     $("#userNumber").text(userNumber);
-                    //check for win/loss
+                });
+
+                checkWinLoss();
+
+                //check for win/loss
+                function checkWinLoss() {
                     if (userNumber === targetNumber) {
                         wins++;
                         window.setTimeout(function () {
@@ -135,12 +140,10 @@
                             $("#userNumber").text(userNumber);
                             playGame();
                         }, 300);
-                    }
-
-                    userNumber += parseInt($(this).attr('value'));
-                    $("#userNumber").text(userNumber);
-
-                });
+                    };
+                    // userNumber += parseInt($(this).attr('value'));
+                    // $("#userNumber").text(userNumber);
+                };
 
             });
 
